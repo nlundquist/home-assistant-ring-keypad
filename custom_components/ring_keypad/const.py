@@ -1,4 +1,4 @@
 """Constants for Ring Keypad."""
 
-DOMAIN = "ring_keypad"
+DOMAIN = "nlundquist"
 DEFAULT_DELAY = 60
