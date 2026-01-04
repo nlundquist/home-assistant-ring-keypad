@@ -113,8 +113,10 @@ def alarm_state_command(
     """Return a zwave command for updating the alarm state."""
     if not (message := ALARM_STATE.get(state)):
         raise ValueError(f"Invalid alarm state command: {state}")
+   
     property_key: str | int = MODE_PROPERTY_KEY
     value: int | str = MAX_VALUE
+    
     if isinstance(message, Delay):
         property_key = PROPERTY_KEY_TIMEOUT
         if delay is None:
@@ -122,6 +124,11 @@ def alarm_state_command(
         else:
             value = delay
         value = _format_delay(value)
+    
+    elif (state is AlarmControlPanelState.TRIGGERED) {
+        property_key = NOTIFICATION_SOUND_PROPERTY_KEY
+    }
+    
     return {
         "command_class": COMMAND_CLASS,
         "endpoint": ENDPOINT,
@@ -139,7 +146,7 @@ def alarm_command(alarm: str) -> dict[str, str | int]:
         "command_class": COMMAND_CLASS,
         "endpoint": ENDPOINT,
         "property": int(property),
-        "property_key": MODE_PROPERTY_KEY,
+        "property_key": NOTIFICATION_SOUND_PROPERTY_KEY,
         "value": MAX_VALUE,
     }
 
