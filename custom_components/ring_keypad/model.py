@@ -125,9 +125,8 @@ def alarm_state_command(
             value = delay
         value = _format_delay(value)
     
-    elif (state is AlarmControlPanelState.TRIGGERED) {
+    elif (state is AlarmControlPanelState.TRIGGERED):
         property_key = NOTIFICATION_SOUND_PROPERTY_KEY
-    }
     
     return {
         "command_class": COMMAND_CLASS,
